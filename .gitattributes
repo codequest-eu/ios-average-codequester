@@ -16,3 +16,4 @@ ios-avarage-codequester/lbfmodel.yaml filter=lfs diff=lfs merge=lfs -text
 *.hpp filter=lfs diff=lfs merge=lfs -text
 *.xml filter=lfs diff=lfs merge=lfs -text
 *.yaml filter=lfs diff=lfs merge=lfs -text
+*.mm filter=lfs diff=lfs merge=lfs -text
