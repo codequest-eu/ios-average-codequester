@@ -63,6 +63,10 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     [self initFaceClassifier];
 }
 
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (IBAction) generateAvarageFaceTapped: (id) sender {
     [self.avarageFaceButton setEnabled: NO];
 

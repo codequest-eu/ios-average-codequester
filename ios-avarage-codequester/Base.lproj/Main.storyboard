@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjL-ZI-K8D">
-                                <rect key="frame" x="100" y="820" width="214" height="30"/>
+                                <rect key="frame" x="136.5" y="784" width="141" height="48"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                 <state key="normal" title="Generate!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -28,18 +27,29 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTg-BM-ajA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="756"/>
+                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cTg-BM-ajA" secondAttribute="height" multiplier="1:1" id="qbI-e6-J1b"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="EWY-dt-jZI">
+                                <rect key="frame" x="150" y="64" width="244" height="55.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EWY-dt-jZI" secondAttribute="height" multiplier="325:74" id="km3-N7-05Z"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.39607843139999999" green="0.1176470588" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cTg-BM-ajA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4QR-er-Isg"/>
                             <constraint firstItem="cTg-BM-ajA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8GP-R4-ZKr"/>
-                            <constraint firstItem="cTg-BM-ajA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="H7n-YB-cKG"/>
-                            <constraint firstItem="tjL-ZI-K8D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="NcD-NH-sff"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tjL-ZI-K8D" secondAttribute="trailing" constant="100" id="gJd-eY-GQA"/>
+                            <constraint firstItem="cTg-BM-ajA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ho2-U0-73L"/>
+                            <constraint firstItem="EWY-dt-jZI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ovl-VP-RrK"/>
+                            <constraint firstItem="EWY-dt-jZI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="150" id="feD-72-Lhy"/>
+                            <constraint firstItem="tjL-ZI-K8D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m0J-DB-8wJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cTg-BM-ajA" secondAttribute="trailing" id="tJ3-vi-Y4l"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tjL-ZI-K8D" secondAttribute="bottom" constant="12" id="uWK-GE-hFQ"/>
-                            <constraint firstItem="tjL-ZI-K8D" firstAttribute="top" secondItem="cTg-BM-ajA" secondAttribute="bottom" constant="20" id="zNg-nX-QXP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tjL-ZI-K8D" secondAttribute="bottom" constant="30" id="uWK-GE-hFQ"/>
+                            <constraint firstAttribute="trailing" secondItem="EWY-dt-jZI" secondAttribute="trailing" constant="20" id="zCq-Rr-Y42"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -50,6 +60,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="89"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="975" height="222"/>
+    </resources>
 </document>
