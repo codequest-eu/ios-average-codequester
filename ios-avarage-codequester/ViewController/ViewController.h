@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8216ee3f2ea135cdefdf5c5535d22af196052f23f0d37c07b09c02b014579b11
-size 215
+//
+//  ViewController.h
+//  ios-avarage-codequester
+//
+//  Created by HD on 05/04/2019.
+//  Copyright © 2019 codequest. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController
+
+@end

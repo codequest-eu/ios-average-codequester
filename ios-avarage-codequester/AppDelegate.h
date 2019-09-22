@@ -3,7 +3,7 @@
 //  ios-avarage-codequester
 //
 //  Created by HD on 05/04/2019.
-//  Copyright © 2019 HD. All rights reserved.
+//  Copyright © 2019 codequest. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
