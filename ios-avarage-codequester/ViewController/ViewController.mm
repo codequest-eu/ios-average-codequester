@@ -68,14 +68,17 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
 }
 
 - (IBAction) generateAvarageFaceTapped: (id) sender {
-    [self.avarageFaceButton setEnabled: NO];
+    [self.avarageFaceButton setHidden: YES];
 
-    NSArray * allFiles = [self prepareFaceImageNames];
-    UIImage * processed = [self generateAvarageFaceFrom: allFiles];
-
-    self.imageView.image = processed;
-
-    [self.avarageFaceButton setEnabled: YES];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSArray * allFiles = [self prepareFaceImageNames];
+        UIImage * processed = [self generateAvarageFaceFrom: allFiles];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.imageView.image = processed;
+            [self.avarageFaceButton setHidden: NO];
+        });
+    });
 }
 
 - (void) initFaceClassifier {
