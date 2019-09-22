@@ -16,6 +16,7 @@
 #import <opencv2/face.hpp>
 
 #import <stdio.h>
+#import <stdlib.h>
 
 #import "faceBlendCommon.hpp"
 #import "MatSaver.h"
@@ -52,6 +53,7 @@ using namespace cv::face;
 
 @property (weak, nonatomic) IBOutlet UIButton * avarageFaceButton;
 @property (weak, nonatomic) IBOutlet UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet UILabel * phaseLabel;
 
 @end
 
@@ -70,6 +72,10 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
 }
 
 - (IBAction) generateAvarageFaceTapped: (id) sender {
+
+    // Just for visualisation purpose, random person to show each stage
+    luckyNumberShown = arc4random_uniform(imagesCounter);
+
     [self.avarageFaceButton setHidden: YES];
 
     __weak ViewController * weakSelf = self;
@@ -79,6 +85,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         UIImage * processed = [weakSelf generateAvarageFaceFrom: allFiles];
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.imageView.image = processed;
+            weakSelf.phaseLabel.text = @"Calculated average codequester!";
             [weakSelf.avarageFaceButton setHidden: NO];
         });
     });
@@ -103,9 +110,6 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
 }
 
 - (UIImage *) generateAvarageFaceFrom: (NSArray *) facesFiles {
-    NSDate * methodStart = [NSDate date];
-    NSLog(@"Start");
-
     allFaceLandmarks.clear();
     allFaceImages.clear();
 
@@ -114,6 +118,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         UIImage * faceImage = [UIImage imageNamed: faceFileName];
         UIImageToMat(faceImage, faceMat);
         cvtColor(faceMat, bgrFaceMat, COLOR_RGBA2BGR);
+        [self showLuckyIntermediateImage: bgrFaceMat at: i phase: @"Example original image"];
 
         [self findLandmarksOn: bgrFaceMat imageNumber: i];
 
@@ -125,11 +130,6 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
 
     cvtColor(avarageOne, avarageOne, COLOR_BGR2RGB);
     UIImage * avarageImage = MatToUIImage(avarageOne);
-
-    // Log execution time
-    NSDate *methodFinish = [NSDate date];
-    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate: methodStart];
-    NSLog(@"executionTime = %f", executionTime);
 
     return avarageImage;
 }
@@ -155,6 +155,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
             cv::circle(faceMat, oneFaceLandmarkPoints[0][i], 3, cv::Scalar(255,0,0), FILLED);
         }
         [MatSaver saveMat: faceMat inFile: [NSString stringWithFormat: @"landmarks_%d.jpg", number]];
+        [self showLuckyIntermediateImage: faceMat at: number phase: @"Found landmarks"];
     }
 }
 
@@ -176,7 +177,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     // drawing and saving
     rectangle(imageFrameGray, oneImageFaces[0], Scalar(255, 0, 0));
     [MatSaver saveMat: imageFrameGray inFile: [NSString stringWithFormat: @"face_%d.jpg", number]];
-    [self showIntermediateImage: imageFrameGray];
+    [self showLuckyIntermediateImage: imageFrameGray at: number phase: @"Found face rect"];
 }
 
 - (Mat) generateAvarageFaceFromFoundLandmarks {
@@ -214,6 +215,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         Mat imageF_8UC3;
         img.convertTo(imageF_8UC3, CV_8UC3, 255);
         [MatSaver saveMat: imageF_8UC3 inFile: [NSString stringWithFormat: @"normalized_%d.jpg", i]];
+        [self showLuckyIntermediateImage: imageF_8UC3 at: i phase: @"Normalized face"];
     }
 
     // Append boundary points to average points
@@ -237,14 +239,14 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         // Draw Delaunay before warp
         [self drawDelaunayOn: allFaceImagesNormalized[i]
                   withPoints: allFaceLandmarkPointsNormalized[i]
-                      saveAs: @"delaunay_before"
+                      saveAs: @"Delaunay before normalization"
                  imageNumber: i];
 
         Mat warped;
         warpImage(allFaceImagesNormalized[i], warped, allFaceLandmarkPointsNormalized[i], averageFaceLandmarks, dt);
 
         // Draw Delaunay after warp
-        [self drawDelaunayOn: warped withPoints: averageFaceLandmarks saveAs: @"delaunay_after" imageNumber: i];
+        [self drawDelaunayOn: warped withPoints: averageFaceLandmarks saveAs: @"Delaunay after normalization" imageNumber: i];
 
         // Add image intensities for averaging
         output = output + warped;
@@ -279,9 +281,13 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     mat.convertTo(normalized, CV_8UC3, 255);
     drawDelaunay(normalized, points, Scalar(255,255,255));
     [MatSaver saveMat: normalized inFile: [NSString stringWithFormat: @"%@_%d.jpg", name, number]];
+    [self showLuckyIntermediateImage: normalized at: number phase: name];
 }
 
-- (void) showIntermediateImage: (Mat &) mat {
+- (void) showLuckyIntermediateImage: (Mat &) mat at: (int) index phase: (NSString *) phase {
+    if (index != luckyNumberShown) {
+        return;
+    }
     Mat properColors;
     cvtColor(mat, properColors, COLOR_BGR2RGB);
     UIImage * uiimage = MatToUIImage(properColors);
@@ -289,7 +295,10 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     __weak ViewController * weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         weakSelf.imageView.image = uiimage;
+        weakSelf.phaseLabel.text = phase;
     });
+
+    [NSThread sleepForTimeInterval: 2]; // added just for showing purpose
 }
 
 @end

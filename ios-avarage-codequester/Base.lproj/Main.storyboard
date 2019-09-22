@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTg-BM-ajA">
-                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="261" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cTg-BM-ajA" secondAttribute="height" multiplier="1:1" id="qbI-e6-J1b"/>
                                 </constraints>
@@ -38,16 +38,27 @@
                                     <constraint firstAttribute="width" secondItem="EWY-dt-jZI" secondAttribute="height" multiplier="325:74" id="km3-N7-05Z"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm0-R2-vXk">
+                                <rect key="frame" x="20" y="241" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.39607843139999999" green="0.1176470588" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cTg-BM-ajA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4QR-er-Isg"/>
                             <constraint firstItem="cTg-BM-ajA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8GP-R4-ZKr"/>
-                            <constraint firstItem="cTg-BM-ajA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ho2-U0-73L"/>
+                            <constraint firstItem="cTg-BM-ajA" firstAttribute="top" secondItem="fm0-R2-vXk" secondAttribute="bottom" constant="20" id="8Ws-AA-1xt"/>
+                            <constraint firstItem="cTg-BM-ajA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="Ho2-U0-73L"/>
                             <constraint firstItem="EWY-dt-jZI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Ovl-VP-RrK"/>
+                            <constraint firstItem="fm0-R2-vXk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="cZl-nM-USC"/>
                             <constraint firstItem="EWY-dt-jZI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="150" id="feD-72-Lhy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fm0-R2-vXk" secondAttribute="trailing" constant="20" id="gI1-0m-e74"/>
                             <constraint firstItem="tjL-ZI-K8D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m0J-DB-8wJ"/>
+                            <constraint firstItem="fm0-R2-vXk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EWY-dt-jZI" secondAttribute="bottom" constant="10" id="sAY-w0-cxk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cTg-BM-ajA" secondAttribute="trailing" id="tJ3-vi-Y4l"/>
+                            <constraint firstItem="tjL-ZI-K8D" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cTg-BM-ajA" secondAttribute="bottom" constant="10" id="tlg-gz-9Hb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tjL-ZI-K8D" secondAttribute="bottom" constant="30" id="uWK-GE-hFQ"/>
                             <constraint firstAttribute="trailing" secondItem="EWY-dt-jZI" secondAttribute="trailing" constant="20" id="zCq-Rr-Y42"/>
                         </constraints>
@@ -56,11 +67,12 @@
                     <connections>
                         <outlet property="avarageFaceButton" destination="tjL-ZI-K8D" id="tkU-oh-9jM"/>
                         <outlet property="imageView" destination="cTg-BM-ajA" id="EJl-jY-hxf"/>
+                        <outlet property="phaseLabel" destination="fm0-R2-vXk" id="NJ6-YP-wuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="89"/>
+            <point key="canvasLocation" x="137.68115942028987" y="88.392857142857139"/>
         </scene>
     </scenes>
     <resources>
