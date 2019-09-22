@@ -17,7 +17,13 @@ brew install git-lfs
 
 ## Resources
 
-// TODO: add links
+- [OpenCV](https://github.com/opencv/opencv)
+- [OpenCV extra modules](https://github.com/opencv/opencv_contrib)
+- [Course Computer Vision for Faces](https://courses.learnopencv.com/p/computer-vision-for-faces)
+- [Average face tutorial](https://www.learnopencv.com/average-face-opencv-c-python-tutorial)
+- [About Delaunay triangulation](https://www.learnopencv.com/delaunay-triangulation-and-voronoi-diagram-using-opencv-c-python/)
+- [Warp affine](https://docs.opencv.org/3.1.0/d4/d61/tutorial_warp_affine.html)
+- [Local binary patterns](https://en.wikipedia.org/wiki/Local_binary_pattern)
 
 ## Architecture
 
