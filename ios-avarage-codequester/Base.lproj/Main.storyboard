@@ -33,7 +33,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="EWY-dt-jZI">
-                                <rect key="frame" x="150" y="64" width="244" height="55.5"/>
+                                <rect key="frame" x="150" y="74" width="244" height="55.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EWY-dt-jZI" secondAttribute="height" multiplier="325:74" id="km3-N7-05Z"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                             <constraint firstItem="cTg-BM-ajA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4QR-er-Isg"/>
                             <constraint firstItem="cTg-BM-ajA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8GP-R4-ZKr"/>
                             <constraint firstItem="cTg-BM-ajA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ho2-U0-73L"/>
-                            <constraint firstItem="EWY-dt-jZI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ovl-VP-RrK"/>
+                            <constraint firstItem="EWY-dt-jZI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Ovl-VP-RrK"/>
                             <constraint firstItem="EWY-dt-jZI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="150" id="feD-72-Lhy"/>
                             <constraint firstItem="tjL-ZI-K8D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m0J-DB-8wJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cTg-BM-ajA" secondAttribute="trailing" id="tJ3-vi-Y4l"/>

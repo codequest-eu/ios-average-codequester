@@ -30,7 +30,7 @@
 		A6444227231EDDD7007F8F4B /* MatSaver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatSaver.h; sourceTree = "<group>"; };
 		A6444228231EDDD7007F8F4B /* MatSaver.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MatSaver.mm; sourceTree = "<group>"; };
 		A644422A231EDFDA007F8F4B /* GlobalOpenCVUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalOpenCVUtils.h; sourceTree = "<group>"; };
-		A6BBA4402257835D008A0BDE /* ios-avarage-codequester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-avarage-codequester.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6BBA4402257835D008A0BDE /* AverageCQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AverageCQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BBA4432257835D008A0BDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6BBA4442257835D008A0BDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A6BBA4462257835D008A0BDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		A6BBA4412257835D008A0BDE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6BBA4402257835D008A0BDE /* ios-avarage-codequester.app */,
+				A6BBA4402257835D008A0BDE /* AverageCQ.app */,
 			);
 			name = Products;
 			path = ..;
@@ -169,7 +169,7 @@
 			);
 			name = "ios-avarage-codequester";
 			productName = "ios-avarage-codequester";
-			productReference = A6BBA4402257835D008A0BDE /* ios-avarage-codequester.app */;
+			productReference = A6BBA4402257835D008A0BDE /* AverageCQ.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -383,7 +383,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codequest.ios-avarage-codequester";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AverageCQ;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -406,7 +406,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codequest.ios-avarage-codequester";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AverageCQ;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
