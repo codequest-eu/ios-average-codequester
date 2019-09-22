@@ -46,6 +46,8 @@ using namespace cv::face;
     Mat smallerMat;
 
     vector<Point2f> boundaryPts; // 8 Boundary points for Delaunay Triangulation
+
+    int luckyNumberShown;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton * avarageFaceButton;
@@ -70,13 +72,14 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
 - (IBAction) generateAvarageFaceTapped: (id) sender {
     [self.avarageFaceButton setHidden: YES];
 
+    __weak ViewController * weakSelf = self;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        NSArray * allFiles = [self prepareFaceImageNames];
-        UIImage * processed = [self generateAvarageFaceFrom: allFiles];
+        NSArray * allFiles = [weakSelf prepareFaceImageNames];
+        UIImage * processed = [weakSelf generateAvarageFaceFrom: allFiles];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.imageView.image = processed;
-            [self.avarageFaceButton setHidden: NO];
+            weakSelf.imageView.image = processed;
+            [weakSelf.avarageFaceButton setHidden: NO];
         });
     });
 }
@@ -173,6 +176,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     // drawing and saving
     rectangle(imageFrameGray, oneImageFaces[0], Scalar(255, 0, 0));
     [MatSaver saveMat: imageFrameGray inFile: [NSString stringWithFormat: @"face_%d.jpg", number]];
+    [self showIntermediateImage: imageFrameGray];
 }
 
 - (Mat) generateAvarageFaceFromFoundLandmarks {
@@ -275,6 +279,17 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     mat.convertTo(normalized, CV_8UC3, 255);
     drawDelaunay(normalized, points, Scalar(255,255,255));
     [MatSaver saveMat: normalized inFile: [NSString stringWithFormat: @"%@_%d.jpg", name, number]];
+}
+
+- (void) showIntermediateImage: (Mat &) mat {
+    Mat properColors;
+    cvtColor(mat, properColors, COLOR_BGR2RGB);
+    UIImage * uiimage = MatToUIImage(properColors);
+
+    __weak ViewController * weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        weakSelf.imageView.image = uiimage;
+    });
 }
 
 @end
