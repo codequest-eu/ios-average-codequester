@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c9080901445af86ade20cdbe64d0251a342e4f2a2f7a0ff2f05961222c1c339e
-size 557
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>OpenCV</string>
+    <key>CFBundleIdentifier</key>
+    <string>org.opencv</string>
+    <key>CFBundleVersion</key>
+    <string>4.0.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>4.0.0</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundlePackageType</key>
+    <string>FMWK</string>
+</dict>
+</plist>

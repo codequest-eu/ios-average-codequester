@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3c7a03d27e0bff75752c58e5bad7d15654a53c839b0e540e61e55c42ab5948b1
-size 168
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "self:ios-avarage-codequester.xcodeproj">
+   </FileRef>
+</Workspace>

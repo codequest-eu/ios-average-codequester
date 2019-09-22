@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:35af822292b9636d1fc49cf9fdde18f791db1578aa8f16f06cb5e01be427a276
-size 424
+//
+//  AppDelegate.m
+//  ios-avarage-codequester
+//
+//  Created by HD on 05/04/2019.
+//  Copyright © 2019 HD. All rights reserved.
+//
+
+#import "AppDelegate.h"
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    return YES;
+}
+
+@end

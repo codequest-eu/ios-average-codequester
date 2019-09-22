@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1e8715477045b8c6abfd7d4141656deda969db0f9d6a6dd96c10b4c7d6b51a1d
-size 309
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "codequest_12.jpg",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

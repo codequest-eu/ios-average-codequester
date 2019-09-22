@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:918c9d966a1d9c1c8edf85ab74c662bab8584c0f69f5b0a4c47b1709bb450902
-size 695
+// This file is part of OpenCV project.
+// It is subject to the license terms in the LICENSE file found in the top-level directory
+// of this distribution and at http://opencv.org/license.html.
+
+#ifndef OPENCV_CORE_BINDINGS_UTILS_HPP
+#define OPENCV_CORE_BINDINGS_UTILS_HPP
+
+namespace cv { namespace utils {
+//! @addtogroup core_utils
+//! @{
+
+CV_EXPORTS_W String dumpInputArray(InputArray argument);
+
+CV_EXPORTS_W String dumpInputArrayOfArrays(InputArrayOfArrays argument);
+
+CV_EXPORTS_W String dumpInputOutputArray(InputOutputArray argument);
+
+CV_EXPORTS_W String dumpInputOutputArrayOfArrays(InputOutputArrayOfArrays argument);
+
+//! @}
+}} // namespace
+
+#endif // OPENCV_CORE_BINDINGS_UTILS_HPP

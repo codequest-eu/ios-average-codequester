@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9c94dceed1b8924fd84ab14a0e9e0c6b58108516189515982b4dcb5a35a16764
-size 336
+//
+//  main.m
+//  ios-avarage-codequester
+//
+//  Created by HD on 05/04/2019.
+//  Copyright © 2019 HD. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}

@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a66f53ae07b8e6461a6d02b0436b2e568ebc79541065ae450e5e1d3051bb376
-size 653
+// This file is part of OpenCV project.
+// It is subject to the license terms in the LICENSE file found in the top-level directory
+// of this distribution and at http://opencv.org/license.html.
+//
+// Copyright (C) 2018 Intel Corporation
+
+
+#ifndef OPENCV_GAPI_OCL_CORE_API_HPP
+#define OPENCV_GAPI_OCL_CORE_API_HPP
+
+#include <opencv2/core/cvdef.h>     // GAPI_EXPORTS
+#include <opencv2/gapi/gkernel.hpp> // GKernelPackage
+
+namespace cv {
+namespace gapi {
+namespace core {
+namespace ocl {
+
+        GAPI_EXPORTS GKernelPackage kernels();
+
+} // namespace ocl
+} // namespace core
+} // namespace gapi
+} // namespace cv
+
+
+#endif // OPENCV_GAPI_OCL_CORE_API_HPP
