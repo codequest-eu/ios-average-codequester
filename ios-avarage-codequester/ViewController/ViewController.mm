@@ -122,7 +122,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         UIImageToMat(faceImage, faceMat);
         cvtColor(faceMat, bgrFaceMat, COLOR_RGBA2BGR);
 
-        [self showLuckyIntermediateImage: bgrFaceMat at: i phase: @"Example original image" sleepAfter: true];
+        [self showLuckyIntermediateImage: bgrFaceMat at: i phase: @"Example original image"];
 
         [self findLandmarksOn: bgrFaceMat imageNumber: i];
 
@@ -159,7 +159,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
             cv::circle(faceMat, oneFaceLandmarkPoints[0][i], 3, cv::Scalar(255,0,0), FILLED);
         }
         [MatSaver saveMat: faceMat inFile: [NSString stringWithFormat: @"landmarks_%d.jpg", number]];
-        [self showLuckyIntermediateImage: faceMat at: number phase: @"Found landmarks" sleepAfter: false];
+        [self showLuckyIntermediateImage: faceMat at: number phase: @"Found landmarks"];
     }
 }
 
@@ -181,7 +181,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     // drawing and saving
     rectangle(imageFrameGray, oneImageFaces[0], Scalar(255, 0, 0));
     [MatSaver saveMat: imageFrameGray inFile: [NSString stringWithFormat: @"face_%d.jpg", number]];
-    [self showLuckyIntermediateImage: imageFrameGray at: number phase: @"Found face rect" sleepAfter: true];
+    [self showLuckyIntermediateImage: imageFrameGray at: number phase: @"Found face rect"];
 }
 
 - (Mat) generateAvarageFaceFromFoundLandmarks {
@@ -219,7 +219,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         Mat imageF_8UC3;
         img.convertTo(imageF_8UC3, CV_8UC3, 255);
         [MatSaver saveMat: imageF_8UC3 inFile: [NSString stringWithFormat: @"normalized_%d.jpg", i]];
-        [self showLuckyIntermediateImage: imageF_8UC3 at: i phase: @"Normalized face" sleepAfter: false];
+        [self showLuckyIntermediateImage: imageF_8UC3 at: i phase: @"Normalized face"];
     }
 
     // Append boundary points to average points
@@ -285,13 +285,12 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     mat.convertTo(normalized, CV_8UC3, 255);
     drawDelaunay(normalized, points, Scalar(255,255,255));
     [MatSaver saveMat: normalized inFile: [NSString stringWithFormat: @"%@_%d.jpg", name, number]];
-    [self showLuckyIntermediateImage: normalized at: number phase: name sleepAfter: true];
+    [self showLuckyIntermediateImage: normalized at: number phase: name];
 }
 
 - (void) showLuckyIntermediateImage: (Mat &) mat
                                  at: (int) index
-                              phase: (NSString *) phase
-                         sleepAfter: (BOOL) sleep{
+                              phase: (NSString *) phase {
     if (index != luckyNumberShown) {
         return;
     }
@@ -304,10 +303,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         weakSelf.imageView.image = uiimage;
         weakSelf.phaseLabel.text = phase;
     });
-
-    if (sleep) {
-        [NSThread sleepForTimeInterval: 1]; // added just for showing purpose
-    }
+    [NSThread sleepForTimeInterval: 3]; // added just for showing purpose
 }
 
 @end
