@@ -77,6 +77,8 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     luckyNumberShown = arc4random_uniform(imagesCounter);
 
     [self.avarageFaceButton setHidden: YES];
+     self.phaseLabel.text = @"Initialize...";
+    self.imageView.image = NULL;
 
     __weak ViewController * weakSelf = self;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -86,6 +88,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.imageView.image = processed;
             weakSelf.phaseLabel.text = @"Calculated average codequester!";
+            [weakSelf.avarageFaceButton setTitle: @"Regenerate!" forState: UIControlStateNormal];
             [weakSelf.avarageFaceButton setHidden: NO];
         });
     });
@@ -118,7 +121,8 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         UIImage * faceImage = [UIImage imageNamed: faceFileName];
         UIImageToMat(faceImage, faceMat);
         cvtColor(faceMat, bgrFaceMat, COLOR_RGBA2BGR);
-        [self showLuckyIntermediateImage: bgrFaceMat at: i phase: @"Example original image"];
+
+        [self showLuckyIntermediateImage: bgrFaceMat at: i phase: @"Example original image" sleepAfter: true];
 
         [self findLandmarksOn: bgrFaceMat imageNumber: i];
 
@@ -155,7 +159,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
             cv::circle(faceMat, oneFaceLandmarkPoints[0][i], 3, cv::Scalar(255,0,0), FILLED);
         }
         [MatSaver saveMat: faceMat inFile: [NSString stringWithFormat: @"landmarks_%d.jpg", number]];
-        [self showLuckyIntermediateImage: faceMat at: number phase: @"Found landmarks"];
+        [self showLuckyIntermediateImage: faceMat at: number phase: @"Found landmarks" sleepAfter: false];
     }
 }
 
@@ -177,7 +181,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     // drawing and saving
     rectangle(imageFrameGray, oneImageFaces[0], Scalar(255, 0, 0));
     [MatSaver saveMat: imageFrameGray inFile: [NSString stringWithFormat: @"face_%d.jpg", number]];
-    [self showLuckyIntermediateImage: imageFrameGray at: number phase: @"Found face rect"];
+    [self showLuckyIntermediateImage: imageFrameGray at: number phase: @"Found face rect" sleepAfter: true];
 }
 
 - (Mat) generateAvarageFaceFromFoundLandmarks {
@@ -215,7 +219,7 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         Mat imageF_8UC3;
         img.convertTo(imageF_8UC3, CV_8UC3, 255);
         [MatSaver saveMat: imageF_8UC3 inFile: [NSString stringWithFormat: @"normalized_%d.jpg", i]];
-        [self showLuckyIntermediateImage: imageF_8UC3 at: i phase: @"Normalized face"];
+        [self showLuckyIntermediateImage: imageF_8UC3 at: i phase: @"Normalized face" sleepAfter: false];
     }
 
     // Append boundary points to average points
@@ -281,10 +285,13 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
     mat.convertTo(normalized, CV_8UC3, 255);
     drawDelaunay(normalized, points, Scalar(255,255,255));
     [MatSaver saveMat: normalized inFile: [NSString stringWithFormat: @"%@_%d.jpg", name, number]];
-    [self showLuckyIntermediateImage: normalized at: number phase: name];
+    [self showLuckyIntermediateImage: normalized at: number phase: name sleepAfter: true];
 }
 
-- (void) showLuckyIntermediateImage: (Mat &) mat at: (int) index phase: (NSString *) phase {
+- (void) showLuckyIntermediateImage: (Mat &) mat
+                                 at: (int) index
+                              phase: (NSString *) phase
+                         sleepAfter: (BOOL) sleep{
     if (index != luckyNumberShown) {
         return;
     }
@@ -298,7 +305,9 @@ static cv::Size normalizedSize(600, 600); // Dimensions of output image
         weakSelf.phaseLabel.text = phase;
     });
 
-    [NSThread sleepForTimeInterval: 2]; // added just for showing purpose
+    if (sleep) {
+        [NSThread sleepForTimeInterval: 1]; // added just for showing purpose
+    }
 }
 
 @end
