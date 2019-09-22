@@ -12,8 +12,8 @@ brew install git-lfs
 
 ## Requirements
 
-- Xcode version 10.3
-- iOS SDK minimum version 11.0
+- Xcode version minimum 10.3
+- iPhone with iOS version minimum 11.0
 
 ## Resources
 
