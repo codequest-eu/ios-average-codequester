@@ -1,4 +1,4 @@
-# ios-average-codequester
+# Average codequester
 
 Learning app written in Objective-C++ with use of OpenCV library. Calculates an average face of poeple working at codequest.
 
